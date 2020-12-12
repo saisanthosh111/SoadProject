@@ -1,0 +1,75 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} About Us{% endblock %}
+{% block body %}
+
+
+
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div>
+    <div class="container">
+      <h1 class="display-3">My Awesome Cart!</h1>
+      <p>Sell Daily is an E-Commerce website which is built to help new start-up manufacturing companies and also allows the customers to purchase their products. Our Speciality is we provide the best service for our start-up companies registered with us. In this Corona pandemic situation, it is hard to find jobs, according to the Hindu newspaper around 12.2 crore Indians had lost their jobs. Hence, there is a hike in the start-up business. But, most of these companies face tough competition from well-estabilished companies. So to provide a platform for these type of companies we built this website. We encourage these start-up companies and spotlight them to expand their business.
+We deliver your products to the customer with utmost care and give you their valuable feedback to improve the products. We believe that E-commerce is revolutionizing the way we all shop in India. By including the start-up companies it expands the market and gives the customer multiple options. We also provide multiple payment options for the customer to purchase your products making it easier.
+Our Registration process is as simple as making a coffee..
+The start-up companies should register with us.
+Log in with your credentials.
+Post your products with all the details.
+Done!!!
+The customer can view your products and buy them.
+Please make sure you read all our Terms and Conditions on our website. If you have any query, please send us and also, give us your valuable suggestions which help us to grow together.
+Happy Selling.<span id="dots">...</span><span id="more">We also manufacture the spare parts for all the top leading companies. The products are laptop, smartphones, tablets, smart watches,... etc and many more. We are expanding our business so we would also manufacture many products in the near future.</p>
+      <button onclick="myFunction()" id="myBtn">Learn more</button>
+
+        <script>
+        function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Learn more";
+        moreText.style.display = "none";
+            } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Learn less";
+        moreText.style.display = "inline";
+            }
+        }
+        </script>
+    </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Easy to Access</h2>
+        <p>Our user interface is very easy to use. We made a very easy process for placing the order, searching items, and many more. Website is designed in such a way that anyone can use because of our User friendly UI.</p>
+      </div>
+      <div class="col-md-4">
+        <h2>Safe and Secure</h2>
+        <p>There are many fraudsters in the market so we take great care of our customers. We provide safe and secure payment services for the benefit of the customers. User can use our payment services without any hesitation. We take well renowned payment merchants for the safety of our customers.</p>
+      </div>
+      <div class="col-md-4">
+        <h2>Great Deals</h2>
+        <p>We provide best deals in the market. We sell geniune products with the best deals that satisfies the customers. We provide products with awesome prices. There will be Huge discounts during festive season for the happiness of our customers.</p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container -->
+</div>
+</div>
+
+</main>
+
+
+
+
+{% endblock %}

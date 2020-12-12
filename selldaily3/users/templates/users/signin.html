@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+{% load static %}
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="/signincs.css">
+ -->
+ <link rel="stylesheet" type="text/css" href="{% static 'users/x.css' %}">
+</head>
+<body>
+
+<div class="container">
+      <div class="login">
+         <div class="crd m-5 p-3">
+                      <form method="POST">
+                        <!-- <!It increases the security> -->
+                        {%csrf_token%}
+                        <!-- <fieldset class="form-group"> -->
+                          <!-- <legend class="border-bottom mb-4" style="text-align: center;">Login to your account</legend> -->
+                          <!-- {{form|crispy}} -->
+                          <!-- <! we add a tag to get nicely in the form of table that is paragraph> -->
+                        <!-- </fieldset> -->
+                        <!-- {{ form.as_p }}
+                       -->
+                       <table>
+                             <tr>
+                               <td>{{ form.username.label_tag }}</td>
+                               <td>{{ form.username }}</td>
+                             </tr>
+                             <tr>
+                               <td>{{ form.password.label_tag }}</td>
+                               <td>{{ form.password }}</td>
+                             </tr>
+                           </table>
+                        <div class="form-group">
+                          <button class="btn btn-outline-info" type="submit" >Login</button>
+                                      <small class="text-muted ml-2">
+                                            <a href="#">Forgot password? </a>
+                                      </small>
+                        </div>
+                      </form>
+
+
+
+              <!-- <input type="checkbox"><span>Remember me</span>
+              <a href="#">Forgot password?</a>
+              <button>log in</button> -->
+              <hr><p>Or Connect With</p><hr>
+              <div class="social-icons">
+                <ul>
+            <li><a href="https://www.facebook.com/"><img src="{{ 'static/users/images/fb.png' }}"></a></li>
+            <li><a href="https://www.instagram.com/accounts/login/?hl=en"><img src="{{ 'static/users/images/instagram.png' }}"></a></li>
+            <li><a href="https://telegram.org/blog/login"><img src="{{ 'static/users/images/telegram.jpg' }}"></a></li>
+            <!-- <a href="https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fwelcome"><img src="{{ 'static/users/images/Up.png' }}"></a> -->
+            <li><a href="https://twitter.com/login?lang=en"><img src="{{ 'static/users/images/twitter.jpg' }}"></a></li>
+            <li><a href="https://www.linkedin.com/login"><img src="{{ 'static/users/images/linkedin.png' }}"></a></li>
+</ul>
+          </div>
+              <div class="clearfix"></div>
+              <span class="copyright">&copy;2019</span>
+         </div>
+      </div>
+
+      <div class="register">
+          <div class="container">
+              <i class="fas fa-user-plus fa-5x"></i>
+              <h2>Hello,friend!</h2>
+                      <p>Enter your personal details and start journey with us</p>
+              <button><a href="signup" role="button" target="_blank" class="btn btn-success mr-2"> Sign Up </a>
+              <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+      </div>
+    </div>
+  </div>
+    </body>
+    </html>

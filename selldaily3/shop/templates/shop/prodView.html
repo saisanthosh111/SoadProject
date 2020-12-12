@@ -1,0 +1,109 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} {{product.product_name}} - My Awesome Cart{% endblock %}
+{% block body %}
+
+
+<div class="container my-4">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+        <img src="/media/{{product.image}}" width="233px" height="385px">
+
+    </div>
+
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}%0D%0A%0D%0AHey! Check this amazing product on SellDaily!" target="_blank"><img src="/media/shop/images/WhatsApp.png" width="45" height="45"></a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"><img src="/media/shop/images/facebook.png" width="45" height="45"></a>
+        <a href="{% url 'ShopHome' %}"><button class="btn btn-warning mx-0">Back</button></a>
+        </p>
+        <!-- <div class="row"> -->
+            <button class="btn btn-primary mx-3" id="submitBtn">Buy Now</button>
+            <!-- <button class="btn btn-primary">Add To Cart</button> -->
+        <!-- </div> -->
+
+    </div>
+
+    <div class="col-md-8">
+        <h5>The Name of the Product is {{product.product_name}}</h5>
+        <p><b>The Price of the product is Rs.{{product.price}} </b></p>
+        <p>The discount given by our website is {{product.desc}}</p>
+<p>A watch is a portable timepiece intended to be carried or worn by a person. It is designed to keep a consistent movement despite the motions caused by the person's activities. A wristwatch is designed to be worn around the wrist, attached by a watch strap or other type of bracelet, including metal bands, leather straps or any other kind of bracelet. A pocket watch is designed for a person to carry in a pocket, often attached to a chain. The study of timekeeping is known as horology.
+
+Watches progressed in the 17th century from spring-powered clocks, which appeared as early as the 14th century. During most of its history the watch was a mechanical device, driven by clockwork, powered by winding a mainspring, and keeping time with an oscillating balance wheel. These are called mechanical watches.[1][2] In the 1960s the electronic quartz watch was invented, which was powered by a battery and kept time with a vibrating quartz crystal. By the 1980s the quartz watch had taken over most of the market from the mechanical watch. Historically, this is called the quartz revolution (also known as quartz crisis in Swiss).[3][4] Developments in the 2010s include smartwatches, which are elaborate computer-like electronic devices designed to be worn on a wrist. They generally incorporate timekeeping functions, but these are only a small subset of the smartwatch's facilities.</p>
+
+    </div>
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+
+{% block js %}
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+console.log('working');
+if(localStorage.getItem('cart') == null){
+var cart = {};
+}
+else
+{
+cart = JSON.parse(localStorage.getItem('cart'));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+}
+$('.cart').click(function(){
+console.log('clicked');
+var idstr = this.id.toString();
+console.log(idstr);
+if (cart[idstr] !=undefined){
+cart[idstr] = cart[idstr] + 1;
+}
+else
+{
+cart[idstr] = 1;
+}
+console.log(cart);
+localStorage.setItem('cart', JSON.stringify(cart));
+document.getElementById('cart').innerHTML = Object.keys(cart).length;
+});
+$('#popcart').popover();
+document.getElementById("popcart").setAttribute('data-content', '<h5>Cart for your items in my shopping cart</h5>');
+
+
+
+console.log("Sanity check!");
+
+// Get Stripe publishable key
+fetch("/shop/config/")
+.then((result) => { return result.json(); })
+.then((data) => {
+  // Initialize Stripe.js
+  var stripe = Stripe(data.publicKey);
+  // new
+  // Event handler
+  document.querySelector("#submitBtn").addEventListener("click", () => {
+    // Get Checkout Session ID
+    fetch("http://localhost:8000/shop/create-checkout-session/")
+    .then((result) => { return result.json(); })
+    .then((data) => {
+
+      console.log("data is ",data);
+      // Redirect to Stripe Checkout
+      return stripe.redirectToCheckout({sessionId: data.sessionId})
+    })
+    .then((res) => {
+      console.log(res);
+    });
+  });
+});
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,159 @@
+*
+{
+margin: 0;
+padding: 0;
+}
+
+body
+{
+    font-family:sans-serif;
+}
+
+
+/* /----------------------------------------------------------------carousel slides--------------------------------------------------------------/ */
+/* /---------------------------------------------------------------------------------------------------------------------------------------------/ */
+
+.carousel-item img{
+	height: 100vh;
+}
+.carousel-caption{
+	position: absolute;
+	top: 44%;
+	width: 100%;
+	left: 0;
+	right: 0;
+	}
+.carousel-caption h2{
+	font-size: 2.8rem;
+	letter-spacing: .3rem;
+}
+.carousel-caption a:hover{
+	box-shadow: 0 0 10px #7ce08a, 0 0 40px #7ce08a, 0 0 80px #7ce08a;
+}
+
+
+/* /----------electronic-------/ */
+/* #services */
+{
+    padding:50px 0;
+}
+
+.service-img
+{
+    width: 160px;
+    height:160px;
+    margin-top: 20px;
+}
+
+.services
+{
+    padding :10px;
+}
+
+.services h4
+{
+    padding:5px;
+    margin-top:25px;
+    text-transform: uppercase;
+}
+
+
+/* /-----------------------------------------------------some words from our customers-----------------------------------------------------------/ */
+/* /---------------------------------------------------------------------------------------------------------------------------------------------/ */
+
+.card-img-top{
+    border-radius: 50%;
+    transform: translateY(-10px);
+  }
+.card-img-top:hover{
+      transition: transform .5s ease;
+      cursor: pointer;
+    transform: translateY(-40px);
+ }
+.card{
+      margin: 2rem;
+    border-top-left-radius: 40%;
+    border-bottom-right-radius: 20%;
+    border-top-right-radius: 40%;
+
+
+  }
+
+/* /social media/ */
+
+#social-media
+{
+    background-color: #f8f9fa;
+    padding:50px 0;
+}
+
+#social-media p
+{
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.social-icons img
+{
+    width:60px;
+    trasition:0.5s;
+    border-radius: 50%;
+}
+
+.social-icons a:hover img
+{
+    transform: translateY(-10px);
+}
+
+/* /footeredtr/ */
+
+#footer
+{
+    /* /background-image:linear-gradient(to right,rgb(129, 103, 243),blue) ;/ */
+    background-image: linear-gradient(to right, #6db9ef, #7ce08a);
+    color:#fff;
+}
+
+.footer-img
+{
+    width: 100%;
+    height:50%;
+}
+
+.footer-box
+{
+    padding-top: 20px;
+
+}
+
+.footer-box img
+{
+    width: 240px;
+    margin-bottom:20px;
+}
+
+.footer-box .fa
+{
+    margin-right: 8px;
+    font-size: 25px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    padding-top: 7px;
+    border-radius: 2px;
+
+}
+
+hr
+{
+    background-color: white;
+}
+
+
+.copyright
+{
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    text-align: center;
+}

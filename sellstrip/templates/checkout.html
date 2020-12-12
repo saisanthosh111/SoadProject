@@ -1,0 +1,51 @@
+{% block title%} Check Out Form - My Awesome Cart{% endblock %}
+{% block body %}
+<div class="container my-3">
+    <h3>Check out form </h3>
+    <form action="" method="post">{% csrf_token %}
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name='name' placeholder="Enter Your Name">
+  </div>
+  <div class="form-group">
+    <label for="itemsJson">Items</label>
+    <input type="text" class="form-control" id="itemsJson" name='itemsJson' placeholder="Enter Items">
+  </div>
+
+  <div class="form-group">
+    <label for="amount">amount</label>
+    <input type="number" class="form-control" id="amount" name='amount' placeholder="Enter Your amount">
+  </div>
+
+  <div class="form-group">
+    <label for="name">email</label>
+    <input type="email" class="form-control" id="email" name='email' placeholder="Enter Your Email">
+  </div>
+
+  <div class="form-group">
+    <label for="address">address</label>
+    <input type="text" class="form-control" id="address" name='address' placeholder="Enter Your address">
+  </div>
+
+  <div class="form-group">
+    <label for="city">city</label>
+    <input type="text" class="form-control" id="city" name='city' placeholder="Enter Your city">
+  </div>
+
+  <div class="form-group">
+    <label for="state">state</label>
+    <input type="text" class="form-control" id="state" name='state' placeholder="Enter Your state">
+  </div>
+
+  <div class="form-group">
+    <label for="zip_code">zipcode</label>
+    <input type="text" class="form-control" id="zip_code" name='zip_code' placeholder="Enter Your zipcode">
+  </div>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+
+
+</div>
+{% endblock %}

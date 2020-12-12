@@ -1,0 +1,328 @@
+<!doctype html>
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'users/selldaily.css' %}">
+    <title>Welcome to My Awesome Cart</title>
+    <!--start of script source files-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>
+	<!--end of script source files-->
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Selldaily</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item {% block homeactive %}  {% endblock homeactive %}">
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item {% block aboutactive %}  {% endblock aboutactive %}" >
+                  <a class="nav-link" href="/shop/about">About</a>
+                </li>
+                <li class="nav-item {% block contactactive %}  {% endblock contactactive %} ">
+                  <a class="nav-link" href="/shop/contact">Contact Us</a>
+                </li>
+
+
+              </ul>
+              <form method="get" action="/search"class="form-inline my-2 my-lg-0 mx-3">
+                <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query"> -->
+                <!-- <a><button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Chat With Us</button>  -->
+                <a href="/chat" role="button" target="_blank" class="btn btn-outline-success m-2 my-sm-0">Chat With Us</a>
+<a href="{% provider_login_url "google" %}" role="button" target="_blank" class="btn btn-outline-success m-2 my-sm-0">Google connect</a>
+                <a href="/admin" role="button" target="_blank" class="btn btn-outline-success m-2 my-sm-0"> Admin Panel </a>
+              </form>
+
+                   <!-- Button to  trigger SignUp modal -->
+
+      <!-- Button to  trigger Login modal -->
+      {% if user.is_authenticated %}
+  <ul class="navbar-nav mr-2">
+  <li class="nav-item dropdown">
+  <!-- <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a> -->
+  <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown"> -->
+            <a class="dropdown-item" href="/logout">Logout</a>
+   <!-- </div> -->
+        </li>
+        </ul>
+        </div>
+  {% else %}
+    <!-- Button to  trigger Login modal -->
+  <!-- <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#loginModal"> -->
+  <!-- Login -->
+  <!-- </button> -->
+
+  <a href="signup" role="button" target="_blank" class="btn btn-success mr-2"> Login/Sign Up </a>
+  <!-- <a href="signin" role="button" target="_blank" class="btn btn-success mr-2"> Sign In </a> -->
+
+
+
+  {% endif %}
+
+          </nav>
+          {% for message in messages  %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <strong>Message : </strong> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+          {% endfor %}
+
+
+
+
+          {% block body %}
+
+          <!-- <div class="jumbotron">
+          <h1 class="display-4" style="text-align:center">Welcome to SellDaily</h1>
+          <p class="lead" style="text-align:center">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-One of the biggest website for selling components of various products </p>
+          <hr class="my-4">
+          <p style="text-align:center">Sell Daily is an E-Commerce website which is built to help new start-up manufacturing companies and also allows the customers to purchase their products.
+            <br>Our Speciality is we provide the best service for our start-up companies registered with us</p>
+          {% if user.is_authenticated %}
+          <a class="btn btn-primary btn-lg" href="/shop" role="button" >Go To Shop</a>
+          {% endif %}
+          </div> -->
+
+          <!--start of image slider-->
+		<div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators" data-interval="2000">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1" ></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			</ol>
+			<div class="carousel-inner">
+				<!--slide 1-->
+				<div class="carousel-item active">
+					<img class="img-responsive" src="{% static 'users/images/laptop.jpeg' %}" alt="image" style="width: 100%;">
+					<div class="carousel-caption text-center">
+						<h2 style="color:black">WELCOME TO SELL DAILY</h2>
+            <p style="color:black">Sell Daily is an E-Commerce website which is built to help new start-up manufacturing companies and also allows the customers to purchase their products.
+              <br>Our Speciality is we provide the best service for our start-up companies registered with us</p>
+              {% if user.is_authenticated %}
+              <a class="btn btn-primary btn-lg" href="/shop" role="button" >Go To Shop</a>
+              {% endif %}
+					</div>
+				</div>
+				<div class="carousel-item">
+				 	<img class="img-responsive" src="{% static 'users/images/tab.jpeg' %}" style="width: 100%;">
+				 	<div class="carousel-caption text-center">
+						<h2 style="color: black">WELCOME TO SELL DAILY</h2>
+            <p style="color:black">Sell Daily is an E-Commerce website which is built to help new start-up manufacturing companies and also allows the customers to purchase their products.
+              <br>Our Speciality is we provide the best service for our start-up companies registered with us</p>
+              {% if user.is_authenticated %}
+              <a class="btn btn-primary btn-lg" href="/shop" role="button" >Go To Shop</a>
+              {% endif %}
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img class="img-responsive" src="{% static 'users/images/atm.jpeg' %}" style="width: 100%;">
+					<div class="carousel-caption text-center">
+						<h2 style="color: black">WELCOME TO SELL DAILY</h2>
+            <p style="color: black">Sell Daily is an E-Commerce website which is built to help new start-up manufacturing companies and also allows the customers to purchase their products.
+              <br>Our Speciality is we provide the best service for our start-up companies registered with us</p>
+              {% if user.is_authenticated %}
+              <a class="btn btn-primary btn-lg" href="/shop" role="button" >Go To Shop</a>
+              {% endif %}
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+    <section id="services" style="padding:50px 0;">
+      <div class="container text-center">
+        <h1 class="title">ELECTRONIC PRODUCTS</h1>
+        <div class="row text-center">
+          <div class="col-md-4 services">
+            <img src="{% static 'users/images/display.jpg' %}" class="service-img"  style="width:160px;height:160px;">
+            <br>
+            <h4>DISPLAY</h4>
+
+          </div>
+          <div class="col-md-4 services">
+            <img src="{% static 'users/images/cooling_pad.jpg' %}" class="service-img"  style="width:160px;height:160px;" >
+            <h4>cooling pad</h4>
+
+          </div>
+          <div class="col-md-4 services">
+            <img src="{% static 'users/images/plastic_body.jpg' %}" class="service-img" style="width:160px;height:160px;">
+            <h4>Plastic Body</h4>
+
+          </div>
+        </div>
+        {% if user.is_authenticated %}
+        <a class="btn btn-primary btn-lg" href="/shop" role="button" >Go To Shop</a>
+        {% endif %}
+      </div>
+    </section>
+
+    <div id="wordfromcustomers" style="background-image: linear-gradient(to right, #6db9ef, #7ce08a);">
+      <div class="col-12 text-center"><!--for padding-->
+        <h3 class="heading pt-4">SOME WORDS FROM OUR CUSTOMERS</h3>
+        <div class="heading-underline">
+        </div>
+        <i class="fas fa-comment-dots" style="font-size: 60px;color: green"></i>
+      </div>
+      <div class="row pt-4">
+        <div class="col-md-4">
+          <div class="card text-center" style="background-color: #121e27">
+            <img src="{% static 'users/images/team1.jpeg' %}"  class="card-img-top" >
+            <div class="card-body" style="color: white">
+              <h4 style="color: #33d1a0"><bold>Krishna Vamsi</bold></h4>
+              <i class="fas fa-quote-right" style="font-size: 30px;color:#33d1a0"></i>
+              <p>I found this website when I was an engineering student. I used to get so many holidays and a lot of free time during Sundays. I simply used to navigate to this website and find some INSTANT jobs near my area and earned some bucks for that day by simply doing the job. This helped a lot when I didnt have enough money to spend.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center" style="background-color: #121e27">
+            <img src="{% static 'users/images/team2.jpeg' %}" class="card-img-top">
+            <div class="card-body" style="color: white">
+              <h4 style="color: #33d1a0"><bold>Rohit Ganesh</bold></h4>
+              <i class="fas fa-quote-right" style="font-size: 30px;color:#33d1a0"></i>
+              <p>I used to work for an advertising agency and most of the time I was completely free for days when we didn't have any projects. I am a good driver and I came to know about this website from my friend. Finally, I earned a significant amount of money by being a driver. Thanks to INSTANT JOBS!</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="card text-center" style="background-color: #121e27">
+            <img src="{% static 'users/images/team3.jpeg' %}" class="card-img-top">
+            <div class="card-body" style="color: white">
+              <h4 style="color: #33d1a0"><bold>Sanghvi J</bold></h4>
+              <i class="fas fa-quote-right" style="font-size: 30px;color:#33d1a0"></i>
+              <p>I was once a very lazy girl who always was like a burden to my family. But at one point in time, I wanted to do any work which can earn some money until I get some decent job. Instant Jobs was simply like how I thought in my mind. It has showed me and navigated me to many jobs for my part time.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+                   <!--social media-->
+                  <section id="social-media">
+                    <div class="container text-center">
+                      <p>FOLLOW US ON SOCIAL MEDIA</p>
+                      <div class="social-icons">
+                        <a href="https://www.facebook.com/"><img src="{{ 'static/users/images/fb.png' }}"></a>
+                  <a href="https://www.instagram.com/accounts/login/?hl=en"><img src="{{ 'static/users/images/instagram.png' }}"></a>
+                  <a href="https://telegram.org/blog/login"><img src="{{ 'static/users/images/telegram.jpg' }}"></a>
+                  <!-- <a href="https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fwelcome"><img src="{{ 'static/users/images/Up.png' }}"></a> -->
+                  <a href="https://twitter.com/login?lang=en"><img src="{{ 'static/users/images/twitter.jpg' }}"></a>
+                  <a href="https://www.linkedin.com/login"><img src="{{ 'static/users/images/linkedin.png' }}"></a>
+                      </div>
+                    </div>
+                  </section>
+
+            <!--footer-->
+      <section id="footer">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4 footer-box">
+
+                    <p>About our website </p>
+
+                  </div>
+                  <div class="col-md-4 footer-box">
+                    <p><b>CONTACT US</b></p>
+                    <p><i class="fa fa-map-marker" ></i>  Sri City, Andhra pradesh</p>
+                    <p><i class="fa fa-phone"></i>  +91 9900099000</p>
+                    <p><i class="far fa-envelope"></i>  abc@gmail.com</p>
+                  </div>
+
+                  <div class="col-md-4 footer-box">
+
+
+                    <a href="policy.html">Privacy Policy</a>
+                  </div>
+
+                </div>
+                  <hr>
+                  <p class="copyright">Website Designed By
+                    <a>IIITS Students Team</a>
+                    <p style="text-align: center;">&copy; 2020 selldaily.com</p>
+                  </p>
+              </div>
+              <script language="Javascript">
+                document.write("<center><span style='color:red;'>This Webpage was Last Modified on: " + document.lastModified +"</span>	</center>");
+                </script>
+                <br>
+
+                    </div>
+
+            </section>
+
+
+          {% endblock body %}
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalTitle">Login Here</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <div class="modal-body">
+          <form action="/login" method="post">
+      <div class="form-group">
+          {% csrf_token %}
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Choose a unique username" required>
+      </div>
+      <div class="form-group">
+        <label for="pass">Enter your password </label>
+        <input type="password" class="form-control" id="loginpassword" name="loginpassword" placeholder="Enter your password " required>
+      </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+          </div>
+           <div class="modal-footer">
+          </div>
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
