@@ -11,3 +11,7 @@ Group Number 7
 3) S Vinay S20180010169
 4) M Sai Nikhil S20180010095
 5) B Rajkumar S20180010026
+=======
+The selldaily3 is the code for our original application whereas the sellstrip is the mock application using our selldaily api
+
+
